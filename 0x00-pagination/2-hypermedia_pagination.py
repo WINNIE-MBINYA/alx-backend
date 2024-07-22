@@ -7,6 +7,7 @@ import csv
 import math
 from typing import List, Dict, Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Calculate the start and end index for the given page and page size.
@@ -77,9 +78,9 @@ class Server:
 
         dataset = self.dataset()
         total_pages = math.ceil(len(dataset) / page_size)
-        
+
         data = self.get_page(page, page_size)
-        
+
         next_page = page + 1 if page < total_pages else None
         prev_page = page - 1 if page > 1 else None
 
