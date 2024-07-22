@@ -5,6 +5,7 @@ Simple helper function for pagination.
 
 from typing import Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Calculate the start and end index for the given page and page size.
