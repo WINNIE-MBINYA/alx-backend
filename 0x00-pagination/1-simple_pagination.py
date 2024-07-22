@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Simple pagination.
+Simple helper function for pagination.
 """
 
 import csv
-from typing import List
+from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -42,21 +42,20 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Retrieve the appropriate page of the dataset.
+        Get a page from the dataset
 
         Args:
-            page (int): The page number (1-indexed).
-            page_size (int): The number of items per page.
+            page (int): The page number (default 1).
+            page_size (int): The number of items per page (default 10).
 
         Returns:
-            List[List]: A list of rows representing the requested page.
+            List[List]: The requested page of the dataset.
         """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
-        dataset = self.dataset()
         start_index, end_index = index_range(page, page_size)
-
+        dataset = self.dataset()
         if start_index >= len(dataset):
             return []
 
